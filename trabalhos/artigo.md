@@ -191,7 +191,9 @@ namespace projeto1
 }
 
 
+
 Output:
+
 
 O aluno foi criado! Matrícula: 20162
 
@@ -202,7 +204,9 @@ Nota: 7
 A aluna Vanessa está aprovada! 
 
 
+
 •	Referências Bibliográficas:
+
 
 Apostila C#: <https://www.caelum.com.br/apostila-csharp-orientacao-objetos/>
 

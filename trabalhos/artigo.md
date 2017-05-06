@@ -27,11 +27,14 @@ private long id;
 public long getId(){
 
           return id;
+	  
 }
+
 public void setId(long id){
 
         this.id=id;
 }
+
 }
 
 C#:
@@ -56,7 +59,9 @@ class Test
 		
                Console.WriteLine(i);
          }
+	 
     }
+    
 }
 
 C++:
@@ -111,21 +116,25 @@ public class Aluno(){
          this.nota = 10;
 		 
     }
+    
    public string getNome(){
    
          return nome;
 		 
     }
+    
     public void setNota(int nota){
 	
           this.nota = nota;
 		  
     }
+    
     public int getNota(){
 	
           return nota;
 		  
     }
+    
 }
 
 2)	Métodos em forma de expressão: Métodos podem ser definidos em uma só linha de código, indicando nome, tipo, corpo e o retorno em si. 

@@ -27,11 +27,14 @@ private long id;
 public long getId(){
 
           return id;
+	  
 }
+
 public void setId(long id){
 
         this.id=id;
 }
+
 }
 
 C#:
@@ -49,13 +52,16 @@ C#:
 class Test
 
 {
+
     static void Main() {
-	
+    
         for (int i = 1; i <= 5; i++){
 		
                Console.WriteLine(i);
          }
+	 
     }
+    
 }
 
 C++:
@@ -87,9 +93,11 @@ C#:
 public class Aluno
 
 {
+
     public string Nome { get; } = "Vanessa";
 	
     public int Nota { get; set; } = 10;
+    
 }
 
 
@@ -108,21 +116,25 @@ public class Aluno(){
          this.nota = 10;
 		 
     }
+    
    public string getNome(){
    
          return nome;
 		 
     }
+    
     public void setNota(int nota){
 	
           this.nota = nota;
 		  
     }
+    
     public int getNota(){
 	
           return nota;
 		  
     }
+    
 }
 
 2)	Métodos em forma de expressão: Métodos podem ser definidos em uma só linha de código, indicando nome, tipo, corpo e o retorno em si. 
@@ -179,7 +191,9 @@ namespace projeto1
 }
 
 
+
 Output:
+
 
 O aluno foi criado! Matrícula: 20162
 
@@ -190,8 +204,16 @@ Nota: 7
 A aluna Vanessa está aprovada! 
 
 
+
 •	Referências Bibliográficas:
-http://blog.caelum.com.br/novidades-do-c-6-0/
-http://www.linhadecodigo.com.br/artigo/1620/java-e-csharpnet-um-breve-e-introdutorio-estudo-comparativo-de-suas-sintaxes-e-convencoes.aspx
-https://docs.microsoft.com/pt-br/dotnet/articles/csharp/csharp
-https://pt.wikipedia.org/wiki/C_Sharp
+
+
+Apostila C#: <https://www.caelum.com.br/apostila-csharp-orientacao-objetos/>
+
+Blog Caelum: <http://blog.caelum.com.br/novidades-do-c-6-0/>
+
+Comparação Java e C#: <http://www.linhadecodigo.com.br/artigo/1620/java-e-csharpnet-um-breve-e-introdutorio-estudo-comparativo-de-suas-sintaxes-e-convencoes.aspx>
+
+Site da linguagem: <https://docs.microsoft.com/pt-br/dotnet/articles/csharp/csharp>
+
+Wikipedia: <https://pt.wikipedia.org/wiki/C_Sharp>

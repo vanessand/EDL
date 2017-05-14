@@ -2,10 +2,10 @@ function love.load ()
 
     ball = { x=400, y=540, r=10 }
     player = { x=340, y=550, w=120, h=10 }
-	ball.angle = - math.pi / 4
-	ball.speed = 200
-	player.speed = 450
-	score = 0
+    ball.angle = - math.pi / 4
+    ball.speed = 200
+    player.speed = 450
+    score = 0
 end
 	
 --função de colisão

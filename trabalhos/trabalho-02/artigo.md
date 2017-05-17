@@ -1,6 +1,6 @@
 # A linguagem de programação C#
 
-- #### Origem:
+- ### Origem:
 
 
 >    Em 1999, a Microsoft utilizava a linguagem Java, mas ela não se comunicava bem com as bibliotecas de código nativo do Windows. Para solucionar esse problema, a Microsoft implementou o J++, que era a linguagem Java acrescida das extensões proprietárias do código nativo. 
@@ -10,7 +10,7 @@
 >    O C# foi baseado não só no Java, mas também no próprio C, C++, Smalltalk, Delphi e VB. A ideia de se basear em tantas linguagens era incorporar soluções para os problemas existentes nelas.
 O projeto final foi lançado em 2002: C# 1.0 junto com o ambiente .Net 1.0. Hoje em dia, o C# está na versão 6.0 e o.Net na versão 4.6.2.
 ---------------------------------------------------------------------------
-- #### 	Classificação:
+- ### 	Classificação:
 
 >    C# é uma linguagem de programação interpretada, multi-paradigma, orientada a objetos e de tipagem forte. 
 
@@ -19,7 +19,7 @@ O projeto final foi lançado em 2002: C# 1.0 junto com o ambiente .Net 1.0. Hoje
 >    C# é uma das linguagens projetadas para funcionar na Common Language Infrastructure da plataforma .NET Framework. 
 
 ---------------------------------------------------------------------------
-- #### 	Comparações:
+- ### 	Comparações:
 
 >    A sintaxe de C# é altamente expressiva, simples e fácil de aprender. Ela será instantaneamente reconhecível para qualquer pessoa familiarizada com C, C++ ou Java.
 
@@ -143,7 +143,7 @@ public static string verNotaAluno(Aluno aluno){
 ```
 
 ---------------------------------------------------------------------------
-### Avaliação de Expressividade:
+- ### Avaliação de Expressividade:
 > O C# é uma linguagem altamente expressiva. Conforme vimos nos exemplos dados nesse artigo, seu código é facilmente legível até para uma pessoa não muito conhecedora de linguagens de programação. Escrevê-lo também não é complicado e caso tenhamos algum problema no desenvolvimento, os mecanismos de pesquisa estão cheios de respostas e sugestões para ajudar e aprender C#.
 
 > Sendo Orientada a Objetos, a compreensão do seu código fica mais simples; pois ele tem toda uma estrutura com seus namespaces, classes e funções que trabalham em conjunto para ser uma ótima opção para quem quer começar.
@@ -196,7 +196,7 @@ A aluna Vanessa está aprovada!
 ```
 ---------------------------------------------------------------------------
 
-#### •	Referências Bibliográficas:
+- ### Referências Bibliográficas:
 
 * [Apostila C#](https://www.caelum.com.br/apostila-csharp-orientacao-objetos/)
 * [Blog Caelum](http://blog.caelum.com.br/novidades-do-c-6-0/)

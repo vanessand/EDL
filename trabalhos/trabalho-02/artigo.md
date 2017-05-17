@@ -1,141 +1,131 @@
-A linguagem de programação C#
+# A linguagem de programação C#
 
-•	Origem
+- #### Origem:
 
-Em 1999, a Microsoft utilizava a linguagem Java, mas ela não se comunicava bem com as bibliotecas de código nativo do Windows. Para solucionar esse problema, a Microsoft implementou o J++, que era a linguagem Java acrescida das extensões proprietárias do código nativo. 
-O J++ violava o contrato que a Microsoft tinha com a Sun (proprietária do Java na época). Isso gerou uma das batalhas judiciais mais conhecidas nesse ano, na qual a Microsoft perdeu. Sem o J++, ela teve que se inovar: criar uma nova linguagem para atender todos os seus requisitos. Eis que surge o C#, por meio de um projeto chamado COOL - C like Object Oriented Language, chefiado por Anders Hejlserg (desenvolvedor da famosa Delphi). 
-O C# foi baseado não só no Java, mas também no próprio C, C++, Smalltalk, Delphi e VB. A ideia de se basear em tantas linguagens era incorporar soluções para os problemas existentes nelas.
+
+>    Em 1999, a Microsoft utilizava a linguagem Java, mas ela não se comunicava bem com as bibliotecas de código nativo do Windows. Para solucionar esse problema, a Microsoft implementou o J++, que era a linguagem Java acrescida das extensões proprietárias do código nativo. 
+
+>    O J++ violava o contrato que a Microsoft tinha com a Sun (proprietária do Java na época). Isso gerou uma das batalhas judiciais mais conhecidas nesse ano, na qual a Microsoft perdeu. Sem o J++, ela teve que se inovar: criar uma nova linguagem para atender todos os seus requisitos. Eis que surge o C#, por meio de um projeto chamado COOL - C like Object Oriented Language, chefiado por Anders Hejlserg (desenvolvedor da famosa Delphi). 
+
+>    O C# foi baseado não só no Java, mas também no próprio C, C++, Smalltalk, Delphi e VB. A ideia de se basear em tantas linguagens era incorporar soluções para os problemas existentes nelas.
 O projeto final foi lançado em 2002: C# 1.0 junto com o ambiente .Net 1.0. Hoje em dia, o C# está na versão 6.0 e o.Net na versão 4.6.2.
+---------------------------------------------------------------------------
+- #### 	Classificação:
+
+>    C# é uma linguagem de programação interpretada, multi-paradigma, orientada a objetos e de tipagem forte. 
+
+>    O código fonte é compilado para Common Intermediate Language (CIL) que é interpretado pela máquina virtual Common Language Runtime (CLR). 
+
+>    C# é uma das linguagens projetadas para funcionar na Common Language Infrastructure da plataforma .NET Framework. 
 
 
-•	Classificação
+- #### 	Comparações:
 
-C# é uma linguagem de programação interpretada, multi-paradigma, orientada a objetos e de tipagem forte. O código fonte é compilado para Common Intermediate Language (CIL) que é interpretado pela máquina virtual Common Language Runtime (CLR). C# é uma das linguagens projetadas para funcionar na Common Language Infrastructure da plataforma .NET Framework. 
+>    A sintaxe de C# é altamente expressiva, simples e fácil de aprender. Ela será instantaneamente reconhecível para qualquer pessoa familiarizada com C, C++ ou Java.
+
+>    Mesmo sendo muito legível, particularmente, considero o Java mais legível que o C#. Por exemplo, seus comandos de get ficam mais explícitos como podemos ver na comparação abaixo:
 
 
-•	Comparações
+##### Java:
 
-A sintaxe de C# é altamente expressiva, simples e fácil de aprender. Ela será instantaneamente reconhecível para qualquer pessoa familiarizada com C, C++ ou Java. 
-Mesmo sendo muito legível, particularmente, considero o Java mais legível que o C#. Por exemplo, seus comandos de get ficam mais explícitos como podemos ver na comparação abaixo:
-
-Java:
-
+```sh
 public class cliente() {
-
-private long id;
-
-public long getId(){
-
-          return id;
-	  
-}
-
-public void setId(long id){
-
+    private long id;
+    public long getId(){
+         return id;
+    }
+    public void setId(long id){
         this.id=id;
+    }
 }
+```
 
-}
+##### C#:
 
-C#:
-
+```sh
 public class cliente {
-
        private long id (get; set;)
 }
+```
+>
 
-No Java se escreve mais do que no C#, ou seja, o C# tem maior writabilidade. 
-Já o C++ tem menos escrita que o C#, com isso podemos dizer que o C++ tem mais writabilidade que o C#:
 
-C#:
+>    No Java se escreve mais do que no C#, ou seja, o C# tem maior writability. E o Java tem maior redability, pois fica mais legível seus comandos.
 
-class Test
+>   Já o C++ tem menos escrita que o C#, com isso podemos dizer que o C++ tem maior writability. Porém, o C# é mais legível que o C++, por ser mais explicativo em seus comandos. Ou seja, o C# tem maior readability que o C++.
 
-{
+>    Vejamos a comparação abaixo:
 
-    static void Main() {
-    
-        for (int i = 1; i <= 5; i++){
-		
-               Console.WriteLine(i);
-         }
-	 
-    }
-    
-}
 
-C++:
+##### C++:
 
+```sh
 int main (void)
 {
     for (int i=1; i<=100; i++)
-	
         cout << i <<"\t";  
 		
 }
+```
 
-Porém, o C# é mais legível que o C++, por ser mais explicativo em seus comandos. Ou seja, o C# tem maior readabilidade que o C++.
+##### C#:
+```sh
+class Test
+{
+    static void Main() {
+        for (int i = 1; i <= 5; i++){
+               Console.WriteLine(i);
+         }
+    }
+}
+```
 
-O C# possui um tipo de variável chamada auto-property: sua declaração pode ser especificada com get/, ao invés de ter que criar métodos de get e set para cada variável como é feito no Java. Elas também já podem ser inicializadas na sua própria declaração, sem precisar criar um construtor para isso.
+    
+>    O C# possui um tipo de variável chamada auto-property: sua declaração pode ser especificada com get/set, ao invés de ter que criar métodos de get e set para cada variável como é feito no Java. Elas também já podem ser inicializadas na sua própria declaração, sem precisar criar um construtor para isso.
 
-Além disso, temos o parâmetro chamado readonly, que determina que a variável só pode ser lida e nunca sobrescrita. Ele serve para não se declarar a variável sem o set. Na última versão do C# já podemos declarar com ou sem set, sem precisar criar um atributo readonly específico.
+>    Além disso, temos o parâmetro chamado readonly, que determina que a variável só pode ser lida e nunca sobrescrita. Ele serve para não se declarar a variável sem o set. Na última versão do C# já podemos declarar com ou sem set, sem precisar criar um atributo readonly específico.
 
+---------------------------------------------------------------------------
 
-•	Representatividade: C# e Java
+### •	Representatividade: 
+| C# | versus | Java |
+| ------ | ------ | ------ |
 
-Como referenciado antes, no C# temos as auto-properties, além da definição de métodos em forma de expressão, que são bastante representativos. Vejamos a abaixo:
+> Como referenciado antes, no C# temos as auto-properties, além da definição de métodos em forma de expressão, que são bastante representativos. Vejamos a abaixo:
 
-1)	Auto-propriedades: As variáveis podem ser criadas com seus métodos de acessibilidade declarados e sua inicialização feita na mesma linha de código: a definição.
-Essas variáveis são chamadas de auto-propriedades.
+*  ###### 1)	Auto-propriedades: As variáveis podem ser criadas com seus métodos de acessibilidade declarados e sua inicialização feita na mesma linha de código: a definição.  Essas variáveis são chamadas de auto-propriedades.
 
-C#:
-
+##### C#:
+```sh
 public class Aluno
 
 {
-
     public string Nome { get; } = "Vanessa";
-	
     public int Nota { get; set; } = 10;
-    
 }
 
+```
 
-Java:
-
+#### Java:
+```sh
 public class Aluno(){
-
     public String nome;
-	
     public Int idade;
-	
     Aluno(){
-	
          nome = "Vanessa";
-		 
          this.nota = 10;
-		 
     }
-    
    public string getNome(){
-   
          return nome;
-		 
     }
-    
     public void setNota(int nota){
-	
           this.nota = nota;
-		  
     }
-    
     public int getNota(){
-	
           return nota;
-		  
     }
-    
 }
+```
 
 2)	Métodos em forma de expressão: Métodos podem ser definidos em uma só linha de código, indicando nome, tipo, corpo e o retorno em si. 
 

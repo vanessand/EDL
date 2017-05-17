@@ -18,7 +18,7 @@ O projeto final foi lançado em 2002: C# 1.0 junto com o ambiente .Net 1.0. Hoje
 
 >    C# é uma das linguagens projetadas para funcionar na Common Language Infrastructure da plataforma .NET Framework. 
 
-
+---------------------------------------------------------------------------
 - #### 	Comparações:
 
 >    A sintaxe de C# é altamente expressiva, simples e fácil de aprender. Ela será instantaneamente reconhecível para qualquer pessoa familiarizada com C, C++ ou Java.
@@ -85,6 +85,7 @@ class Test
 
 >    Além disso, temos o parâmetro chamado readonly, que determina que a variável só pode ser lida e nunca sobrescrita. Ele serve para não se declarar a variável sem o set. Na última versão do C# já podemos declarar com ou sem set, sem precisar criar um atributo readonly específico.
 
+
 ---------------------------------------------------------------------------
 
 ### •	Representatividade: 
@@ -93,7 +94,7 @@ class Test
 
 > Como referenciado antes, no C# temos as auto-properties, além da definição de métodos em forma de expressão, que são bastante representativos. Vejamos a abaixo:
 
-*  ###### 1)	Auto-propriedades: As variáveis podem ser criadas com seus métodos de acessibilidade declarados e sua inicialização feita na mesma linha de código: a definição.  Essas variáveis são chamadas de auto-propriedades.
+*  ##### 1)	Auto-propriedades: As variáveis podem ser criadas com seus métodos de acessibilidade declarados e sua inicialização feita na mesma linha de código: a definição.  Essas variáveis são chamadas de auto-propriedades.
 
 ##### C#:
 ```sh
@@ -127,37 +128,43 @@ public class Aluno(){
 }
 ```
 
-2)	Métodos em forma de expressão: Métodos podem ser definidos em uma só linha de código, indicando nome, tipo, corpo e o retorno em si. 
+*  ##### 2)	Métodos em forma de expressão: Métodos podem ser definidos em uma só linha de código, indicando nome, tipo, corpo e o retorno em si. 
 
-C#:
+#### C#:
+```sh
+    public static string verNotaAluno(Aluno aluno) => aluno.Nome + " Nota: " + aluno.Nota;
+```
 
-public static string verNotaAluno(Aluno aluno) => aluno.Nome + " Nota: " + aluno.Nota;
-
-
-Java:
-
+#### Java:
+```sh
 public static string verNotaAluno(Aluno aluno){
-
-   return aluno.getNome() + " Nota: " + aluno.getNota;
-   
+    return aluno.getNome() + " Nota: " + aluno.getNota;
 }
+```
 
+---------------------------------------------------------------------------
+### Avaliação de Expressividade:
+> O C# é uma linguagem altamente expressiva. Conforme vimos nos exemplos dados nesse artigo, seu código é facilmente legível até para uma pessoa não muito conhecedora de linguagens de programação. Escrevê-lo também não é complicado e caso tenhamos algum problema no desenvolvimento, os mecanismos de pesquisa estão cheios de respostas e sugestões para ajudar e aprender C#.
 
-Eis o programa completo em C#:
+> Sendo Orientada a Objetos, a compreensão do seu código fica mais simples; pois ele tem toda uma estrutura com seus namespaces, classes e funções que trabalham em conjunto para ser uma ótima opção para quem quer começar.
 
+> A inovação da última versão do C#, os métodos em forma de expressão (visto acima), é mais um ponto positivo em relação a expressividade da linguagem. 
+
+> Se C# fosse ser definido em uma palavra seria: praticidade. Ele foi criado com o intuito de ser mais prático que outras linguagens, mais eficiente, mais rápido e mais integrado. Há 15 anos seu objetivo vem sendo atingido. Aprender C# é um ótimo investimento.
+
+> Vejamos o programa completo em C# referenciado nos exemplos de representatividade:
+---------------------------------------------------------------------------
+
+```sh
 using System;
-
 namespace projeto1
 {
     class Aluno
     {
-       
         public string nome { get; set; } 
         public string matricula { get; } = "20162"; //Inicializando uma variável em sua declaração
         public int nota { get; set; }
-
         public string verNotaAluno() => "Nome: " + nome + "\n" + "Nota: " + nota;
-
         public void notaFinal(){
             if (nota >= 7){
                 Console.WriteLine("A aluna {0} está aprovada!", nome);
@@ -166,44 +173,33 @@ namespace projeto1
                 Console.WriteLine("A aluna {0} está reprovada.", nome);
             }
         } 
-
     static void Main(string[] args)
     {
             Aluno vanessa = new Aluno();
             vanessa.nome="Vanessa";
             vanessa.nota=7;
-
             Console.WriteLine("O aluno foi criado! Matrícula: " +    vanessa.matricula);
             Console.WriteLine(vanessa.verNotaAluno());
             vanessa.notaFinal();
         }
     }
 }
+```
 
 
-
-Output:
-
-
+#### Output:
+```sh
 O aluno foi criado! Matrícula: 20162
-
 Nome: Vanessa
-
 Nota: 7 
-
 A aluna Vanessa está aprovada! 
+```
+---------------------------------------------------------------------------
 
+#### •	Referências Bibliográficas:
 
-
-•	Referências Bibliográficas:
-
-
-Apostila C#: <https://www.caelum.com.br/apostila-csharp-orientacao-objetos/>
-
-Blog Caelum: <http://blog.caelum.com.br/novidades-do-c-6-0/>
-
-Comparação Java e C#: <http://www.linhadecodigo.com.br/artigo/1620/java-e-csharpnet-um-breve-e-introdutorio-estudo-comparativo-de-suas-sintaxes-e-convencoes.aspx>
-
-Site da linguagem: <https://docs.microsoft.com/pt-br/dotnet/articles/csharp/csharp>
-
-Wikipedia: <https://pt.wikipedia.org/wiki/C_Sharp>
+* [Apostila C#](https://www.caelum.com.br/apostila-csharp-orientacao-objetos/)
+* [Blog Caelum](http://blog.caelum.com.br/novidades-do-c-6-0/)
+* [Comparação Java e C#](http://www.linhadecodigo.com.br/artigo/1620/java-e-csharpnet-um-breve-e-introdutorio-estudo-comparativo-de-suas-sintaxes-e-convencoes.aspx)
+* [Site do C#](https://docs.microsoft.com/pt-br/dotnet/articles/csharp/csharp)
+* [Wikipedia](https://pt.wikipedia.org/wiki/C_Sharp)

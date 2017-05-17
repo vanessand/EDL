@@ -45,6 +45,7 @@ function love.update (dt)
   elseif ball.y > love.graphics.getHeight() - 10 then
 	ball.y = love.graphics.getHeight() - 10
 	ball.angle = -ball.angle
+	score= score-200
   end
   
   -- limites do teclado

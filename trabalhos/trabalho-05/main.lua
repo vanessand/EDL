@@ -1,4 +1,4 @@
-function love.load ()
+﻿function love.load ()
 
     ball = { x=400, y=540, r=10 }
     player = { x=340, y=550, w=120, h=10 }

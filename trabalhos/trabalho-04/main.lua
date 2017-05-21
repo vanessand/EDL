@@ -2,10 +2,10 @@ function love.load ()
 
     ball = { x=400, y=540, r=10 }
     player = { x=340, y=550, w=120, h=10 }
-	ball.angle = - math.pi / 4
-	ball.speed = 200
-	player.speed = 450
-	score = 0
+    ball.angle = - math.pi / 4
+    ball.speed = 200
+    player.speed = 450
+    score = 0
 end
 	
 --função de colisão
@@ -45,6 +45,7 @@ function love.update (dt)
   elseif ball.y > love.graphics.getHeight() - 10 then
 	ball.y = love.graphics.getHeight() - 10
 	ball.angle = -ball.angle
+	score= score-200
   end
   
   -- limites do teclado
@@ -76,7 +77,7 @@ function love.draw ()
     love.graphics.circle('fill', ball.x, ball.y, ball.r)
     love.graphics.rectangle('fill', player.x,player.y, player.w,player.h)
     love.graphics.printf("SCORE: ",700,580,800,"left")
-	love.graphics.printf(score,750,580,800,"left")
-	love.graphics.printf("QUIT: Q | RESTART: R",10,580,800,"left")
-	love.graphics.setColor(255, 0, 255, 255)
+    love.graphics.printf(score,750,580,800,"left")
+    love.graphics.printf("QUIT: Q | RESTART: R",10,580,800,"left")
+    love.graphics.setColor(255, 0, 255, 255)
 end

@@ -80,8 +80,4 @@ function love.draw ()
     love.graphics.printf(score,750,580,800,"left")
     love.graphics.printf("QUIT: Q | RESTART: R",10,580,800,"left")
     love.graphics.setColor(255, 0, 255, 255)
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> origin/master

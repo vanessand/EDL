@@ -12,8 +12,8 @@
 	-- Propriedade: valor
 	-- Binding Time: compilação
 	-- Explicação: O raio da bola (r) é atribuído em tempo de compilação 
-	--					e não é alterado em toda execução do jogo pois se 
-	-- 						trata de uma propriedade gráfica da bola.	
+	--		e não é alterado em toda execução do jogo pois se 
+	-- 		trata de uma propriedade gráfica da bola.	
 
 end
 	
@@ -29,7 +29,7 @@ end
 	-- Propriedade: semântica
 	-- Binding Time: desing
 	-- Explicação: Local é uma palavra reservada que serve para definir uma variável 
-	--					como local, fazendo-a existir somente no escopo da função.
+	--		como local, fazendo-a existir somente no escopo da função.
 
 
 
@@ -40,7 +40,6 @@ function love.update (dt)
 	-- Propriedade: endereço
 	-- Binding Time: execução
 	-- Explicação: Como dt é uma variável local, seu endereço só pode ser definido em tempo de execução.
-	-- TAREFA 5
 
   ball.x = ball.x + math.cos(ball.angle) * ball.speed * dt
   ball.y = ball.y + math.sin(ball.angle) * ball.speed * dt 
@@ -97,7 +96,7 @@ function love.update (dt)
 	-- Propriedade: valor
 	-- Binding Time: execução
 	-- Explicação: Score é uma variável que muda durante toda execução do jogo, 
-	--				dependendo da atuação do jogador, aumenta e/ou diminui.
+	--		dependendo da atuação do jogador, aumenta e/ou diminui.
 
   
   -- perder ponto caso a bola caia
@@ -115,7 +114,7 @@ function love.update (dt)
 	-- Propriedade: semântica
 	-- Binding Time: compilação
 	-- Explicação: A adição é definida em tempo de compilação 
-	--				de acordo com o tipo dos operandos.
+	--		de acordo com o tipo dos operandos.
 
 	
 end

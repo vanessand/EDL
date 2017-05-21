@@ -17,7 +17,6 @@
 
 end
 	
-	
 --função de colisão
 function collides(ax1,ay1,aw,ah, bx1,by1,bw,bh)
   local ax2,ay2,bx2,by2 = ax1 + aw, ay1 + ah, bx1 + bw, by1 + bh
@@ -30,8 +29,6 @@ end
 	-- Binding Time: desing
 	-- Explicação: Local é uma palavra reservada que serve para definir uma variável 
 	--		como local, fazendo-a existir somente no escopo da função.
-
-
 
 function love.update (dt)
 
@@ -69,7 +66,6 @@ function love.update (dt)
 	-- Binding Time: desing
 	-- Explicação: Definida como uma palavra reservada, retorna o valor de pi da biblioteca Math.
 
-
   if ball.y < 10 then
 	ball.y = 10
 	ball.angle = -ball.angle
@@ -97,7 +93,6 @@ function love.update (dt)
 	-- Binding Time: execução
 	-- Explicação: Score é uma variável que muda durante toda execução do jogo, 
 	--		dependendo da atuação do jogador, aumenta e/ou diminui.
-
   
   -- perder ponto caso a bola caia
   if ball.y == 780 then
@@ -115,7 +110,6 @@ function love.update (dt)
 	-- Binding Time: compilação
 	-- Explicação: A adição é definida em tempo de compilação 
 	--		de acordo com o tipo dos operandos.
-
 	
 end
 
@@ -123,7 +117,7 @@ function love.draw ()
     love.graphics.circle('fill', ball.x, ball.y, ball.r)
     love.graphics.rectangle('fill', player.x,player.y, player.w,player.h)
     love.graphics.printf("SCORE: ",700,580,800,"left")
-	love.graphics.printf(score,750,580,800,"left")
-	love.graphics.printf("QUIT: Q | RESTART: R",10,580,800,"left")
-	love.graphics.setColor(255, 0, 255, 255)
+    love.graphics.printf(score,750,580,800,"left")
+    love.graphics.printf("QUIT: Q | RESTART: R",10,580,800,"left")
+    love.graphics.setColor(255, 0, 255, 255)
 end

@@ -61,10 +61,11 @@ function love.update (dt)
   end
  
 	-- TRABALHO 05  --
-	-- Nome: math.pi
+	-- Nome: then
 	-- Propriedade: semântica
 	-- Binding Time: desing
-	-- Explicação: Definida como uma palavra reservada, retorna o valor de pi da biblioteca Math.
+	-- Explicação: Definida como uma palavra reservada, "then" faz com que o programa execute os 
+	--		comandos posteriores caso a condição seja verdadeira.
 
   if ball.y < 10 then
 	ball.y = 10

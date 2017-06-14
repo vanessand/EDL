@@ -1,4 +1,4 @@
- import Html exposing (text)
+import Html exposing (text)
 -- Considere uma turma de 50 alunos.
 -- Cada aluno possui duas notas.
 -- O aluno que ficou com média maior ou igual a sete é considerado aprovado.
@@ -24,15 +24,17 @@ nome (nm,_,_) = nm -- as notas são ignoradas
 -- retorna um novo valor acumulado
 -- Usando as definições acima, forneça a implementação para os três trechos marcados com <...>:
 turma: Turma
-turma = [("Joao",7,4), ("Maria",10,8),("Andross",8,8),("Dota",3,10),("Radhamantis",7,9)] -- 50 alunos
+turma = [ ("Joao",7,4), ("Maria",10,8), ("Vanessa",6,8), ("Rafael",9,9), 
+          ("Pedro",6,7) ] -- 50 alunos
 -- a) LISTA COM AS MÉDIAS DOS ALUNOS DE "turma" ([5.5, 9, ...])
 medias: List Float
-medias = List.map media turma 
+medias = List.map media turma
 -- b) LISTA COM OS NOMES DOS ALUNOS DE "turma" APROVADOS (["Maria", ...])
---aprovados: List String
---aprovados = List.map nome (List.filter isAprovado turma)
---isAprovado: Aluno -> Bool
---isAprovado a = media a >=  7.0
+aprovados: List String
+aprovados = List.map nome (List.filter aprovado turma)
+
+aprovado: Aluno -> Bool
+aprovado aluno = media aluno >= 7
 -- c) MÉDIA FINAL DOS ALUNOS DE "turma" (média de todas as médias)
 --total: Float
 --total = ...

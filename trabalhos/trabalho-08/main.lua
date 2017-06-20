@@ -5,16 +5,16 @@ function love.load ()
 	ball = { x=400, y=540, r=10 }
 	
 	ball.angle = - math.pi / 4
-    ball.speed = 200
+        ball.speed = 200
 	
 	bolas = {}
 	
 	table.insert(bolas,ball)
 
 	player = { x=340, y=550, w=120, h=10 }
-    player.speed = 450
+        player.speed = 450
 
-    score = 0	
+        score = 0	
 	count = 0
 	cbola = 1
 	cblock = 30
@@ -71,7 +71,7 @@ function gameBad()
 	 co = coroutine.create(function (dt)			
 			
             while true do
-                if(x < 500 and y < 100) then
+                if(x < 500 and y == 100) then
                     me.move(velx*dt, 0)
                 end
                 if(x == 500 and y < 300) then

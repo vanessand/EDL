@@ -62,16 +62,13 @@ function gameBad()
 	me = {
         move = function (dx,dy)
             x = x + dx
-            y = y + dy
-		
-				
+            y = y + dy		
             return x, y
         end,
         get = function ()
             return x, y
         end,
-		
-		 co = coroutine.create(function (dt)			
+	 co = coroutine.create(function (dt)			
 			
             while true do
                 if(x < 500 and y < 100) then
@@ -86,29 +83,27 @@ function gameBad()
                 if(x == 200 and y > 100) then
                     me.move(0, vely*dt*(-1)) 
                 end 
-				
-				if(x > 500) then
-					x=500
-				end
-				if(x < 200) then
-					x=200
-				end
-				if(y > 300) then
-					y=300
-				end
-				if(y < 100) then
-					y=100
-				end
 
-				dt = coroutine.yield()
-            end
-		end)
+		if(x > 500) then
+			x=500
+		end
+		if(x < 200) then
+			x=200
+		end
+		if(y > 300) then
+			y=300
+		end
+		if(y < 100) then
+			y=100
+		end
+
+		dt = coroutine.yield()
+             end
+	end)
     }
     return me
 end
 
-	
- 
 function love.update (dt)
 
 	if gameOver == 0 then 

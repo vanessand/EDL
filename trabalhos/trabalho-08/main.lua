@@ -5,25 +5,96 @@ function love.load ()
 	ball = { x=400, y=540, r=10 }
 	
 	ball.angle = - math.pi / 4
-        ball.speed = 200
+    ball.speed = 200
 	
 	bolas = {}
 	
 	table.insert(bolas,ball)
 
 	player = { x=340, y=550, w=120, h=10 }
-        player.speed = 450
+    player.speed = 450
 
-        score = 0	
+    score = 0	
 	count = 0
 	cbola = 1
 	cblock = 30
+	
+	blockMove = newBlockMove(500,150,100);
+	
+	dx = {500,200}
+    dy = {300,100}
+	
+	xBarLimits = {500,200}
+    yBarLimits = {300,100}
 	
 	gameOver = 0
 	
 	blocks = levelOne()
 end
 
+-- TRABALHO 8 --
+-- Corotina: função newBlockMove()
+-- Desenha um retângulo se movendo de forma retangular durante todo o jogo. Se a bola colide com a coroutine, ela muda de ângulo.
+-- É criado no love.load()
+-- Desenhado a partir da linha 263
+
+function newBlockMove (x,y,vel)
+
+    local direction =  {0,1};
+    local me; 
+    local dx = {500,200}
+    local dy = {300,100}
+    local height = 100
+    local width = 20
+	
+    local setHorizontal = function(horizontal)
+        if((horizontal and height > width) or (not horizontal and height < width)) then
+                local tempH = height
+                height =  width
+                width = tempH
+        end
+    end
+    me = {
+        direction = direction
+        , dx = dx
+        , dy = dy
+        , height = height
+        , width = width
+        , move = function(dt)
+                x = x + dt*direction[1]*vel
+                y = y + dt*direction[2]*vel
+                counter = direction[1]
+                if (x > dx[2]) then x = dx[2] end
+                if (y > dy[2]) then y = dy[2] end
+                if (x < dx[1]) then x = dx[1] end
+                if (y < dy[1]) then y = dy[1] end
+            end
+        , get = function ()
+                return x, y, height, width
+        end
+        , co = coroutine.create( function()
+		
+                    while true do
+                        direction = {1,0}
+                        setHorizontal(true)
+                        coroutine.yield()
+
+                        direction = {0,-1}
+                        setHorizontal(false)
+                        coroutine.yield()
+
+                        direction = {-1,0}
+                        setHorizontal(true)
+                        coroutine.yield()
+
+                        direction = {0,1}
+                        setHorizontal(false)
+                        coroutine.yield()
+                    end
+                end),
+    }
+    return me
+end
 	
 --função de colisão
 function collides(ax1,ay1,aw,ah, bx1,by1,bw,bh)
@@ -36,6 +107,7 @@ end
 -- Cria as novas bolas quando 5 blocos são quebrados
 -- É chamada dentro de um if na linha 155
 
+
 function newBola(x, y)
 	
 	local x1 = x - 10
@@ -45,171 +117,134 @@ function newBola(x, y)
         return ball
     end
 end
-	
--- TRABALHO 8 --
--- Corotina: função gameBad()
--- Desenha um retângulo se movendo de forma retangular quando o jogador perde o jogo (ou seja, quando todas as bolas são removidas)
--- É criado dentro de um if na linha 205 
--- Desenhado a partir da linha 225
-	
-function gameBad()
-	local me 
-	local x = 500
-	local y = 150
-	local velx = 100
-    local vely = 100
+
  
-	me = {
-        move = function (dx,dy)
-            x = x + dx
-            y = y + dy		
-            return x, y
-        end,
-        get = function ()
-            return x, y
-        end,
-	 co = coroutine.create(function (dt)			
-			
-            while true do
-                if(x < 500 and y == 100) then
-                    me.move(velx*dt, 0)
-                end
-                if(x == 500 and y < 300) then
-                    me.move(0, vely*dt)
-                end
-                if(x > 200 and y == 300) then
-                    me.move(velx*dt*(-1), 0)
-                end
-                if(x == 200 and y > 100) then
-                    me.move(0, vely*dt*(-1)) 
-                end 
-
-		if(x > 500) then
-			x=500
-		end
-		if(x < 200) then
-			x=200
-		end
-		if(y > 300) then
-			y=300
-		end
-		if(y < 100) then
-			y=100
-		end
-
-		dt = coroutine.yield()
-             end
-	end)
-    }
-    return me
-end
-
 function love.update (dt)
 
 	if gameOver == 0 then 
   
-	  for i,ball in ipairs(bolas) do
+		-- move a bola
+		for i,ball in ipairs(bolas) do
 		  ball.x = ball.x + math.cos(ball.angle) * ball.speed * dt
 		  ball.y = ball.y + math.sin(ball.angle) * ball.speed * dt 
-	  end
-	  
-	  -- entradas do teclado
-	  if love.keyboard.isDown('left') then
-		player.x = player.x - player.speed * dt
-	  elseif love.keyboard.isDown('right') then
-		player.x = player.x + player.speed * dt
-	  elseif love.keyboard.isDown('r') then
-		love.load()
-	  elseif love.keyboard.isDown('q') then
-		love.event.quit()
-	  end
-
-	  	  -- limites da bola
-	  for i,ball in ipairs(bolas) do
-	  
-		   if ball.x < 10 then
-			ball.x = 10
-			ball.angle = math.pi - ball.angle
-			
-		  elseif ball.x > 790 then
-			ball.x = 790
-			ball.angle = math.pi - ball.angle
-		  end
-
-		  if ball.y < 10 then
-			ball.y = 10
-			ball.angle = -ball.angle
-			
-		  elseif ball.y > love.graphics.getHeight() - 10 then
-			ball.y = love.graphics.getHeight() - 10
-			ball.angle = -ball.angle
-			score = score-200
-			-- remover a bola caso ela caia
-			table.remove(bolas, i)
-			cbola = cbola - 1
-		  end
-	   end
-  
-	  -- limites do jogador
-	   if player.x < 0 then
-		player.x = 0
-	  elseif player.x > 680 then
-		player.x = 680
-	  end
-	  
-	  -- caso tenha colisão com o player
-	  for i,ball in ipairs(bolas) do
-		  if collides(ball.x, ball.y, ball.r, ball.r, player.x, player.y, player.w, player.h) then
-			ball.angle = -ball.angle
-			score = score + 100
-		  end
-	  end
-	 
-	  
-	  -- aumentar a velocidade gradativamente  
-	  for i,ball in ipairs(bolas) do
-		  if ball.speed < 700 then
-			 ball.speed = ball.speed + 0.02
-		  end
-	  end
-	  
-	  --se bater no bloco
-	   for i,ball in ipairs(bolas) do 
-		   for j,v in ipairs(blocks) do
-			if collides(ball.x, ball.y, ball.r / 2, ball.r / 2, v.x, v.y, v.width, v.height) then
-			  ball.angle = -ball.angle
-			  table.remove(blocks, j)
-			  cblock = cblock - 1
-			  count = count + 1
-			  break
-			end
 		end
-	  end
-	  
-	  -- inserir uma nova bola caso 5 blocos tenham sido quebrados
-	  if count > 5  then
-		closure = newBola(player.x, player.y)
-		table.insert(bolas,closure())
-		count = 0
-		cbola = cbola + 1
-		end 
-	  
-	  -- caso não existam mais bolas: game over
-	  if cbola == 0 then
-		gameOver = 1
-		coro = gameBad()
-	  end
-	  
-	end
-  
-  if gameOver == 1 then
-	if love.keyboard.isDown('r') then
+		
+		-- move a coroutine
+		local bx, by = blockMove.get()
+		if(bx == dx[1] and by == dy[2]) then
+			coroutine.resume(blockMove.co)
+		elseif(bx == dx[2] and by == dy[2]) then
+			coroutine.resume(blockMove.co)
+		elseif(bx == dx[1] and by == dy[1]) then
+			coroutine.resume(blockMove.co)
+		elseif(bx == dx[2] and by == dy[1]) then
+			coroutine.resume(blockMove.co)
+		end
+		blockMove.move(dt) 
+		
+		
+		-- entradas do teclado
+		if love.keyboard.isDown('left') then
+		player.x = player.x - player.speed * dt
+		elseif love.keyboard.isDown('right') then
+		player.x = player.x + player.speed * dt
+		elseif love.keyboard.isDown('r') then
 		love.load()
-	elseif love.keyboard.isDown('q') then
+		elseif love.keyboard.isDown('q') then
 		love.event.quit()
-	 end
-	 coroutine.resume(coro.co, dt)
-  end 
+		end
+
+		  -- limites da bola
+		for i,ball in ipairs(bolas) do
+
+			 if ball.x < 10 then
+				ball.x = 10
+				ball.angle = math.pi - ball.angle
+				
+			 elseif ball.x > 790 then
+				ball.x = 790
+				ball.angle = math.pi - ball.angle
+			 end
+
+			 if ball.y < 10 then
+				ball.y = 10
+				ball.angle = -ball.angle
+				
+			 elseif ball.y > love.graphics.getHeight() - 10 then
+				ball.y = love.graphics.getHeight() - 10
+				ball.angle = -ball.angle
+				score = score-200
+				-- remover a bola caso ela caia
+				table.remove(bolas, i)
+				cbola = cbola - 1
+			  end
+			end
+
+			-- limites do jogador
+			if player.x < 0 then
+				player.x = 0
+			elseif player.x > 680 then
+				player.x = 680
+			end
+
+			-- caso tenha colisão com o player
+			for i,ball in ipairs(bolas) do
+				if collides(ball.x, ball.y, ball.r, ball.r, player.x, player.y, player.w, player.h) then
+					ball.angle = -ball.angle
+					score = score + 100
+				end
+			end
+			
+			-- caso colida com a coroutine
+			for i,ball in ipairs(bolas) do
+				local bx,by,bw,bh = blockMove.get()
+				if collides(ball.x, ball.y, ball.r, ball.r, bx, by, bw, bh) then
+					ball.angle = -ball.angle
+				end
+			end
+			
+			-- caso tenha colisão com o bloco
+			for i,ball in ipairs(bolas) do 
+			   for j,v in ipairs(blocks) do
+					if collides(ball.x, ball.y, ball.r / 2, ball.r / 2, v.x, v.y, v.width, v.height) then
+						ball.angle = -ball.angle
+						table.remove(blocks, j)
+						cblock = cblock - 1
+						count = count + 1
+						break
+					end
+				end
+			end
+
+			-- aumentar a velocidade gradativamente  
+			for i,ball in ipairs(bolas) do
+				if ball.speed < 700 then
+					ball.speed = ball.speed + 0.02
+				end
+			end
+
+			-- inserir uma nova bola caso 5 blocos tenham sido quebrados
+			if count > 5  then
+				closure = newBola(player.x, player.y)
+				table.insert(bolas,closure())
+				count = 0
+				cbola = cbola + 1
+			end 
+
+			-- caso não existam mais bolas: game over
+			if cbola == 0 then
+				gameOver = 1
+			end
+
+		end
+
+	if gameOver == 1 then
+		if love.keyboard.isDown('r') then
+			love.load()
+		elseif love.keyboard.isDown('q') then
+			love.event.quit()
+		end
+	end 
 	
 end
 	
@@ -219,15 +254,16 @@ function love.draw ()
 	
 	if gameOver == 1 then
 		love.graphics.printf("Game Over! Aperte R para reiniciar",(love.graphics.getWidth() / 2) - 250, 30, 500, "center")
-		local x,y = coro.get()
-		love.graphics.rectangle('fill', x, y, 50, 50)
 	else 
-	  for i,b in ipairs(blocks) do
+		for i,b in ipairs(blocks) do
 		b:draw()
-	  end
+	end
 	  
 		love.graphics.circle('fill', ball.x, ball.y, ball.r)
 		love.graphics.rectangle('fill', player.x,player.y, player.w,player.h)
+		local x,y = blockMove.get()
+		love.graphics.rectangle('fill', x, y, 100, 20)
+		
 	end 
 		love.graphics.printf("SCORE: ",700,580,800,"left")
 		love.graphics.printf(score,750,580,800,"left")

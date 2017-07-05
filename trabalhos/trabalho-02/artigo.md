@@ -6,8 +6,9 @@ Em 1999, a Microsoft utilizava a linguagem Java, mas ela não se comunicava bem 
 
 O J++ violava o contrato que a Microsoft tinha com a Sun (proprietária do Java na época). Isso gerou uma das batalhas judiciais mais conhecidas nesse ano, na qual a Microsoft perdeu. Sem o J++, ela teve que se inovar: criar uma nova linguagem para atender todos os seus requisitos. Eis que surge o C#, por meio de um projeto chamado COOL - C like Object Oriented Language, chefiado por Anders Hejlserg (desenvolvedor da famosa Delphi). 
 
- O C# foi baseado não só no Java, mas também no próprio C, C++, Smalltalk, Delphi e VB. A ideia de se basear em tantas linguagens era incorporar soluções para os problemas existentes nelas.
+O C# foi baseado não só no Java, mas também no próprio C, C++, Smalltalk, Delphi e VB. A ideia de se basear em tantas linguagens era incorporar soluções para os problemas existentes nelas.
 O projeto final foi lançado em 2002: C# 1.0 junto com o ambiente .Net 1.0. Hoje em dia, o C# está na versão 6.0 e o.Net na versão 4.6.2.
+
 ---------------------------------------------------------------------------
  ### 	Classificação
 

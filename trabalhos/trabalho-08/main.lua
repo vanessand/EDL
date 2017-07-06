@@ -19,14 +19,14 @@ function love.load ()
 	cbola = 1
 	cblock = 30
 	
-	blockMove = newBlockMove(500,150,100);
+	direction = {0,1}
 	
-	dx = {500,200}
-    dy = {300,100}
+	blockMove = newBlockMove(300,350,100);
 	
-	xBarLimits = {500,200}
-    yBarLimits = {300,100}
+	dx = {300,500}
+    dy = {300,500}
 	
+	dt = 0
 	gameOver = 0
 	
 	blocks = levelOne()
@@ -39,57 +39,36 @@ end
 -- Desenhado a partir da linha 263
 
 function newBlockMove (x,y,vel)
-
-    local direction =  {0,1};
-    local me; 
-    local dx = {500,200}
-    local dy = {300,100}
-    local height = 100
-    local width = 20
 	
-    local setHorizontal = function(horizontal)
-        if((horizontal and height > width) or (not horizontal and height < width)) then
-                local tempH = height
-                height =  width
-                width = tempH
-        end
-    end
-    me = {
-        direction = direction
-        , dx = dx
-        , dy = dy
-        , height = height
-        , width = width
-        , move = function(dt)
-                x = x + dt*direction[1]*vel
-                y = y + dt*direction[2]*vel
-                counter = direction[1]
-                if (x > dx[2]) then x = dx[2] end
-                if (y > dy[2]) then y = dy[2] end
-                if (x < dx[1]) then x = dx[1] end
-                if (y < dy[1]) then y = dy[1] end
-            end
+	vel = 100
+	dx = {300,500}
+	dy = {300,500}
+	height = 20
+	width = 100
+	
+    local me = {
+		  
+		  move = function(dt)
+			
+				x = x + vel*dt*direction[1]
+				y = y + vel*dt*direction[2]	
+				
+				if (x > dx[2]) then x = dx[2] end
+				if (y > dy[2]) then y = dy[2] end
+				if (x < dx[1]) then x = dx[1] end
+				if (y < dy[1]) then y = dy[1] end
+			
+			end
         , get = function ()
-                return x, y, height, width
-        end
-        , co = coroutine.create( function()
+					return x, y, width, height
+				end
+        , co = coroutine.create(function ()
 		
                     while true do
-                        direction = {1,0}
-                        setHorizontal(true)
-                        coroutine.yield()
-
-                        direction = {0,-1}
-                        setHorizontal(false)
-                        coroutine.yield()
-
-                        direction = {-1,0}
-                        setHorizontal(true)
-                        coroutine.yield()
-
-                        direction = {0,1}
-                        setHorizontal(false)
-                        coroutine.yield()
+						coroutine.yield({1, 0})
+						coroutine.yield({0, 1})
+						coroutine.yield({-1, 0})
+						coroutine.yield({0, -1})
                     end
                 end),
     }
@@ -113,7 +92,7 @@ function newBola(x, y)
 	local x1 = x - 10
     local y1 = y - 10
     return function()
-        ball = {x = x1, y = y1, r=10, angle = - math.pi / 4, speed = 200}
+			ball = {x = x1, y = y1, r=10, angle = - math.pi / 4, speed = 200}
         return ball
     end
 end
@@ -130,18 +109,18 @@ function love.update (dt)
 		end
 		
 		-- move a coroutine
-		local bx, by = blockMove.get()
-		if(bx == dx[1] and by == dy[2]) then
+		bxx, byy = blockMove.get()
+		if(bxx == 500 and byy == 500) then 
 			coroutine.resume(blockMove.co)
-		elseif(bx == dx[2] and by == dy[2]) then
+		elseif(bxx == 500 and byy == 300) then
 			coroutine.resume(blockMove.co)
-		elseif(bx == dx[1] and by == dy[1]) then
+		elseif(bxx == 300 and byy == 500) then 
 			coroutine.resume(blockMove.co)
-		elseif(bx == dx[2] and by == dy[1]) then
+		elseif(bxx == 300 and byy == 300) then 
 			coroutine.resume(blockMove.co)
 		end
-		blockMove.move(dt) 
 		
+		blockMove.move(dt) 
 		
 		-- entradas do teclado
 		if love.keyboard.isDown('left') then
@@ -197,7 +176,7 @@ function love.update (dt)
 			
 			-- caso colida com a coroutine
 			for i,ball in ipairs(bolas) do
-				local bx,by,bw,bh = blockMove.get()
+				local bx,by,bw,bh = blockMove:get()
 				if collides(ball.x, ball.y, ball.r, ball.r, bx, by, bw, bh) then
 					ball.angle = -ball.angle
 				end
